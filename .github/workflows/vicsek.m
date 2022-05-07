@@ -1,5 +1,6 @@
 %%(1)Initialization parameters
 clear
+
 TMAX=1000; %Iteration cycle
 L=7; %Space size
 noise=0.2; %Noise size
