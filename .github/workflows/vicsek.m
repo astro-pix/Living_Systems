@@ -12,14 +12,12 @@ y=L*rand(1,N);
 angle=2*pi*rand(1,N);
 %%(3)Enter iteration
 for step=1:TMAX
-
    %#1. Drawing
    h=quiver(x,y,cos(angle),sin(angle),0.3);
    xlim([0 L]);
    ylim([0 L]);
    axis square
    pause(0.1)
-   
    %#2. Out-of-bounds correction, get the distance of each point
    D=pdist([x' y'], 'euclidean');
    tmp_x(x<r)=L+x(x<r);
@@ -31,7 +29,6 @@ for step=1:TMAX
    tmp_D=pdist([tmp_x' tmp_y'],'euclidean');
    D=min([D;tmp_D1]);
    M=squareform(D);
-   
    %#3. Get the neighbors of each particle and calculate the average direction of the neighbors
    [l1,l2]=find(0<M & M<r);
    for i=1:N
@@ -42,7 +39,6 @@ for step=1:TMAX
        new_angle(i)=angle(i);
        end
    end
-   
    %#4. Update the x,y coordinates
    x=x+vel*cos(angle);
    y=y+vel*cos(angle);
@@ -53,6 +49,7 @@ for step=1:TMAX
    y(L<y)=y(L<y)-L;
    #6. Update Angular
    angle=new_angle+noise*rand(1,N));
+   
    %Close window
    if findobj==0
      break;
